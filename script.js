@@ -16,7 +16,7 @@ document.body.appendChild(whatsapp);
   const panel=document.createElement('section');
   panel.className='analytics-consent';
   panel.setAttribute('aria-label','Nastavenie analytických cookies');
-  panel.innerHTML='<strong>Pomôžete nám zlepšovať web?</strong><p>Po vašom súhlase používame Google Analytics na meranie návštevnosti a kliknutí na kontakty. Analytické cookies sú dobrovoľné.</p><div><button type="button" data-consent="yes">Prijať analytiku</button><button type="button" data-consent="no">Odmietnuť</button></div>';
+  panel.innerHTML='<strong>Pomôžete nám zlepšovať web?</strong><p>Po vašom súhlase používame Google Analytics na meranie návštevnosti a kliknutí na kontakty. Analytické cookies sú dobrovoľné. <a href="/ochrana-osobnych-udajov/">Ochrana osobných údajov a cookies</a>.</p><div><button type="button" data-consent="yes">Prijať analytiku</button><button type="button" data-consent="no">Odmietnuť</button></div>';
   const settings=document.createElement('button');
   settings.type='button';settings.className='analytics-settings';settings.textContent='Nastavenie cookies';
   document.querySelector('footer')?.appendChild(settings);
