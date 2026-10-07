@@ -1,4 +1,4 @@
-# AYUA WISDOM
+# AYUAWISDOM
 
 Web ajurvédskeho štúdia Dominiky Baranikovej vo Vranove nad Topľou.
 
