@@ -8,3 +8,14 @@ figure{margin:0}.hero-with-portrait{grid-template-columns:1.15fr .85fr;gap:65px}
 
 /* Shared WhatsApp contact card */
 .whatsapp-card{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;align-items:center;gap:15px;max-width:calc(100vw - 32px);padding:15px 22px 15px 15px;background:var(--green);color:var(--cream);border:1px solid var(--gold);border-radius:18px;box-shadow:0 8px 32px #12392d30;transition:transform .2s,box-shadow .2s}.whatsapp-card:hover{transform:translateY(-3px);box-shadow:0 10px 35px #12392d45}.whatsapp-avatar{position:relative;display:block;flex-shrink:0;width:58px;height:58px}.whatsapp-avatar>img{width:58px;height:58px;object-fit:cover;object-position:50% 35%;border:2px solid var(--gold);border-radius:50%}.whatsapp-badge{position:absolute;right:-3px;bottom:-2px;width:25px;height:25px;background:#25d366;border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#12392d}.whatsapp-badge svg{width:17px;height:17px}.whatsapp-copy{display:flex;flex-direction:column;gap:2px}.whatsapp-copy strong{font-size:.95rem;line-height:1.5}.whatsapp-copy small{font-size:.76rem;color:#d4ddd6;line-height:1.5}footer{padding-bottom:110px}@media(max-width:760px){.whatsapp-card{right:12px;bottom:12px;padding:11px 15px 11px 11px;gap:12px}.whatsapp-avatar,.whatsapp-avatar>img{width:46px;height:46px}.whatsapp-copy strong{font-size:.84rem}.whatsapp-copy small{font-size:.7rem}.whatsapp-badge{width:23px;height:23px}footer{padding-bottom:100px}}@media(prefers-reduced-motion:reduce){.whatsapp-card:hover{transform:none}}
+
+/* Analytics consent controls */
+.analytics-consent{position:fixed;left:24px;bottom:24px;z-index:60;width:420px;max-width:calc(100vw - 48px);padding:24px;background:var(--cream);color:var(--green);border:1px solid var(--gold);border-radius:12px;box-shadow:0 8px 32px #12392d30;font-size:.9rem}
+.analytics-consent[hidden]{display:none}
+.analytics-consent strong{font-family:Georgia,serif;font-size:1.25rem;font-weight:400}
+.analytics-consent p{margin:12px 0 18px;line-height:1.6}
+.analytics-consent>div{display:flex;gap:12px;flex-wrap:wrap}
+.analytics-consent button{font:inherit;cursor:pointer;padding:10px 14px;background:var(--green);color:var(--cream);border:1px solid var(--green);border-radius:4px}
+.analytics-consent button[data-consent="no"]{background:var(--cream);color:var(--green)}
+.analytics-settings{font:inherit;font-size:.75rem;cursor:pointer;background:none;border:0;border-bottom:1px solid var(--gold);color:var(--muted);padding:4px 0}
+@media(max-width:760px){.analytics-consent{left:12px;bottom:100px;max-width:calc(100vw - 24px);padding:20px}}
