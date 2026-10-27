@@ -108,3 +108,25 @@ figure{margin:0}.hero-with-portrait{grid-template-columns:1.15fr .85fr;gap:65px}
 .slider-bar-inner{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.slide,.slide-media img{transition:none}}
+
+/* Päta: mapa Google so súhlasom */
+.footer-map{display:grid;grid-template-columns:.8fr 1.6fr;gap:48px;align-items:stretch;padding:34px 0;border-top:1px solid var(--line)}
+.footer-map-info{display:flex;flex-direction:column;justify-content:center}
+.footer-map-info .eyebrow{font-size:.66rem;letter-spacing:.14em;margin-bottom:18px}
+.footer-map-info p{font-size:.87rem;color:var(--muted);line-height:1.8;margin:0 0 12px}
+.footer-map-info .footer-map-name{font-family:Georgia,serif;font-size:1.35rem;line-height:1.2;color:var(--green);margin-bottom:14px}
+.footer-map-name span{display:block;font-family:Arial,sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin-top:6px}
+.footer-map-note a{color:var(--green)}
+.footer-map-links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:6px}
+.footer-map-links a{font-size:.8rem;color:var(--green);border-bottom:1px solid var(--gold);padding-bottom:3px}
+.footer-map-links a:hover{color:var(--gold)}
+.footer-map-frame{position:relative;min-height:300px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#efece0}
+.footer-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.75) sepia(.12)}
+.map-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;text-align:center;color:var(--green);
+background:radial-gradient(circle at 50% 45%,rgba(249,248,241,.94) 0 32%,rgba(249,248,241,.55) 60%,transparent 80%),repeating-linear-gradient(35deg,transparent 0 46px,rgba(170,130,68,.18) 46px 48px),repeating-linear-gradient(-55deg,transparent 0 70px,rgba(18,57,45,.1) 70px 73px),#ece6d6}
+.map-placeholder svg{width:34px;height:34px;color:var(--gold)}
+.map-placeholder p{margin:0;max-width:330px;font-size:.84rem;color:var(--muted);line-height:1.6}
+.map-load{font:inherit;font-size:.85rem;cursor:pointer;padding:11px 20px;background:var(--green);color:var(--cream);border:1px solid var(--green);border-radius:4px;transition:background .2s}
+.map-load:hover{background:#23503d}
+.map-privacy{font-size:.72rem;color:var(--muted);border-bottom:1px solid var(--line)}
+@media(max-width:760px){.footer-map{grid-template-columns:1fr;gap:22px;padding:28px 0}.footer-map-frame{min-height:260px}}
