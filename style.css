@@ -283,3 +283,13 @@ nav .nav-cta{display:none}
 .faq-teaser-list li a:hover::after{transform:translateX(4px)}
 .faq details:target{scroll-margin-top:130px}
 @media(max-width:760px){.faq-teaser{grid-template-columns:1fr;gap:34px}.faq-teaser-list li a{font-size:1rem}}
+
+/* Vzdelávanie: partner a akreditácia */
+.partner-logo{display:block;width:100%;max-width:300px;height:auto;margin-bottom:34px}
+.partner-accred{margin-top:30px;padding-top:28px;border-top:1px solid #d6cbb3}
+.partner-accred h3{font-family:Arial,sans-serif;font-size:1rem;font-weight:600;margin-bottom:12px}
+.partner-courses{list-style:none;padding:0;margin:16px 0 20px;display:flex;flex-wrap:wrap;gap:8px}
+.partner-courses li{font-size:.78rem;padding:7px 12px;border:1px solid #cdbf9f;border-radius:999px;background:rgba(249,248,241,.6);color:var(--green)}
+.partner-note{font-size:.85rem;font-style:italic}
+.partner-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:8px}
+@media(max-width:760px){.partner-logo{max-width:240px;margin-bottom:24px}}
