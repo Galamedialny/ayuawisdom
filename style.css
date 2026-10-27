@@ -263,3 +263,11 @@ background:radial-gradient(circle at 50% 45%,rgba(249,248,241,.94) 0 32%,rgba(24
 .proc-more .service-grid{grid-template-columns:1fr}
 }
 @media(min-width:761px) and (max-width:900px){.wrap{padding-inline:22px}.header{gap:14px}nav{gap:11px}nav a{font-size:.74rem}.brand>span{font-size:1.25rem}}
+
+/* Hlavička: tlačidlo Začať konverzáciu */
+.header-cta{display:inline-flex;align-items:center;gap:9px;flex-shrink:0;padding:11px 18px;background:var(--green);color:var(--cream);border:1px solid var(--green);border-radius:999px;font-size:.84rem;white-space:nowrap;transition:background .2s,color .2s}
+.header-cta svg{width:17px;height:17px;color:#d4b67c}
+.header-cta:hover{background:#23503d}
+nav .nav-cta{display:none}
+@media(max-width:1100px){.header>.header-cta{display:none}}
+@media(max-width:760px){nav .nav-cta{display:inline-flex;align-self:flex-start;margin-top:14px;padding:12px 20px}}
