@@ -305,3 +305,12 @@ nav .nav-cta{display:none}
 .lm-small{font-size:.76rem;color:#b7c6ba;margin:16px 0 0}
 @media(max-width:1100px){.lm-hero{gap:40px}}
 @media(max-width:860px){.lm-hero{grid-template-columns:1fr;padding-block:40px 55px}.lm-form-card{position:static;padding:32px 24px}.lm-recognize{font-size:1.18rem;padding-left:18px}}
+.lm-thanks{max-width:860px;padding-block:90px 100px}
+.lm-thanks h1{font-size:clamp(3rem,5vw,4.6rem)}
+.lm-thanks-steps{margin:10px 0 40px;padding:0;list-style:none;counter-reset:lm;border-top:1px solid var(--line)}
+.lm-thanks-steps li{counter-increment:lm;display:grid;grid-template-columns:44px 1fr;padding:20px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.lm-thanks-steps li::before{content:"0" counter(lm);font-size:.8rem;letter-spacing:.14em;color:var(--gold);padding-top:3px}
+.lm-thanks-steps strong{color:var(--ink);font-weight:600}
+.lm-thanks-steps a{border-bottom:1px solid var(--gold)}
+.lm-thanks-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+@media(max-width:760px){.lm-thanks{padding-block:48px 60px}.lm-thanks-steps li{grid-template-columns:36px 1fr}}
