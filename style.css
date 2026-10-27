@@ -284,14 +284,16 @@ nav .nav-cta{display:none}
 .faq details:target{scroll-margin-top:130px}
 @media(max-width:760px){.faq-teaser{grid-template-columns:1fr;gap:34px}.faq-teaser-list li a{font-size:1rem}}
 
-/* Landing page: Zimný rytmus */
-.lm-hero{display:grid;grid-template-columns:1.15fr .85fr;grid-template-areas:"text form" "points form";grid-template-rows:auto 1fr;gap:0 70px;align-items:start;padding-block:80px 90px}.lm-hero-text{grid-area:text}.lm-form-card{grid-area:form}.lm-points{grid-area:points}
+/* Landing page: bezplatný sprievodca na zimu */
+.lm-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;padding-block:80px 90px}
 .lm-hero h1{font-size:clamp(3rem,5vw,4.8rem)}
 .lm-hero h1 em{display:block;font-size:.5em;line-height:1.25;margin-top:14px}
-.lm-lead{font-size:1.15rem;color:var(--muted);max-width:560px}
-.lm-points{list-style:none;padding:0;margin:34px 0 0;border-top:1px solid var(--line)}
-.lm-points li{padding:16px 0 16px 34px;border-bottom:1px solid var(--line);position:relative}
-.lm-points li::before{content:"";position:absolute;left:4px;top:26px;width:14px;height:1px;background:var(--gold)}
+.lm-recognize{margin:8px 0 34px}
+.lm-recognize-label{display:block;font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.lm-recognize ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.lm-recognize li{font-family:Georgia,serif;font-size:1.25rem;line-height:1.45;padding:14px 0 14px 32px;border-bottom:1px solid var(--line);position:relative}
+.lm-recognize li::before{content:"";position:absolute;left:4px;top:27px;width:14px;height:1px;background:var(--gold)}
+.lm-lead{font-size:1.1rem;color:var(--muted);max-width:600px;margin:0}
 .lm-form-card{background:var(--green);color:var(--cream);padding:44px;position:sticky;top:130px;scroll-margin-top:130px}
 .lm-form-card .eyebrow,.lm-form-card em{color:#d4b67c}
 .lm-form-card h2{font-size:2.6rem}
@@ -305,10 +307,5 @@ nav .nav-cta{display:none}
 .lm-consent a{text-decoration:underline;text-underline-offset:3px}
 .lm-form .button{width:100%;font-size:.95rem;cursor:pointer}
 .lm-small{font-size:.76rem;color:#b7c6ba;margin:16px 0 0}
-.lm-situations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
-.lm-situations p{font-family:Georgia,serif;font-size:1.3rem;line-height:1.45;color:var(--ink);margin:0;padding:28px 28px 28px 0;border-bottom:1px solid #d9cfb9}
-.band-sand .lm-situations p{color:var(--ink)}
-.lm-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-.lm-grid .service-preview h3{min-height:0}
-@media(max-width:1100px){.lm-hero{gap:40px}.lm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:860px){.lm-hero{grid-template-columns:1fr;grid-template-areas:"text" "form" "points";padding-block:40px 55px}.lm-hero-text .lm-lead{margin-bottom:28px}.lm-form-card{position:static;padding:32px 24px}.lm-situations{grid-template-columns:1fr}.lm-situations p{padding-right:0;font-size:1.15rem}.lm-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){.lm-hero{gap:40px}}
+@media(max-width:860px){.lm-hero{grid-template-columns:1fr;padding-block:40px 55px}.lm-form-card{position:static;padding:32px 24px}.lm-recognize li{font-size:1.1rem}}
