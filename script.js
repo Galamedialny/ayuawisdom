@@ -115,3 +115,6 @@ document.querySelectorAll('.has-sub').forEach(item=>{
   document.addEventListener('click',e=>{if(!item.contains(e.target)){item.classList.remove('open');btn?.setAttribute('aria-expanded','false')}});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){item.classList.remove('open');btn?.setAttribute('aria-expanded','false')}});
 });
+
+/* FAQ: otvoriť otázku podľa odkazu */
+(()=>{const open=()=>{let d=null;try{d=location.hash&&document.querySelector(location.hash)}catch{}if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView({block:'start'})}};open();window.addEventListener('hashchange',open)})();
