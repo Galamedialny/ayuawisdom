@@ -58,3 +58,28 @@ document.body.appendChild(whatsapp);
     if(name)window.gtag('event',name,{contact_method:name==='phone_click'?'phone':'whatsapp',transport_type:'beacon'});
   });
 })();
+
+/* Hero slider na úvodnej stránke */
+(()=>{
+  const root=document.querySelector('.hero-slider');if(!root)return;
+  const slides=[...root.querySelectorAll('.slide')],dots=[...root.querySelectorAll('.slider-dot')];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index=0,timer=null;
+  function show(n){
+    index=(n+slides.length)%slides.length;
+    slides.forEach((slide,k)=>{const on=k===index;slide.classList.toggle('is-active',on);slide.setAttribute('aria-hidden',String(!on));slide.inert=!on});
+    dots.forEach((dot,k)=>dot.setAttribute('aria-current',String(k===index)));
+  }
+  function stop(){clearInterval(timer);timer=null}
+  function play(){if(reduce)return;stop();timer=setInterval(()=>show(index+1),7000)}
+  root.querySelector('.slider-prev').addEventListener('click',()=>{show(index-1);play()});
+  root.querySelector('.slider-next').addEventListener('click',()=>{show(index+1);play()});
+  dots.forEach((dot,k)=>dot.addEventListener('click',()=>{show(k);play()}));
+  root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',play);
+  root.addEventListener('focusin',stop);root.addEventListener('focusout',play);
+  let startX=null;
+  root.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});
+  root.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;startX=null;if(Math.abs(dx)>50){show(index+(dx<0?1:-1));play()}});
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():play());
+  show(0);play();
+})();
