@@ -107,3 +107,11 @@ window.ayuaMaps=(()=>{
   document.addEventListener('visibilitychange',()=>document.hidden?stop():play());
   show(0);play();
 })();
+
+/* Podmenu Procedúry */
+document.querySelectorAll('.has-sub').forEach(item=>{
+  const btn=item.querySelector('.sub-toggle');
+  btn?.addEventListener('click',e=>{e.stopPropagation();const open=!item.classList.contains('open');item.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open))});
+  document.addEventListener('click',e=>{if(!item.contains(e.target)){item.classList.remove('open');btn?.setAttribute('aria-expanded','false')}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){item.classList.remove('open');btn?.setAttribute('aria-expanded','false')}});
+});
