@@ -130,3 +130,38 @@ background:radial-gradient(circle at 50% 45%,rgba(249,248,241,.94) 0 32%,rgba(24
 .map-load:hover{background:#23503d}
 .map-privacy{font-size:.72rem;color:var(--muted);border-bottom:1px solid var(--line)}
 @media(max-width:760px){.footer-map{grid-template-columns:1fr;gap:22px;padding:28px 0}.footer-map-frame{min-height:260px}}
+
+/* Fotky zo štúdia */
+.slide-room img{object-position:62% 50%}
+.slide-work img{object-position:50% 28%}
+.intro.band-light{grid-template-columns:1fr 1.1fr;align-items:center}
+.intro-photo{grid-column:1;grid-row:3;margin:10px 0 0;max-width:360px}
+.intro.band-light>h2{grid-column:1;grid-row:2;margin:0}
+.intro.band-light>div{grid-column:2;grid-row:2/4}
+.intro-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:60% 40%;border-radius:150px 150px 8px 8px}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px;margin-bottom:34px}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:10px}
+.gallery img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .8s ease}
+.gallery .g-main img{aspect-ratio:auto;min-height:100%}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;font-size:.78rem;letter-spacing:.06em;color:var(--cream);background:linear-gradient(transparent,rgba(10,35,27,.75))}
+.service-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.service-photos figure{margin:0}
+.service-photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.service-photos figcaption{font-size:.75rem;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+.contact-photo{margin-top:0;margin-bottom:70px}
+.contact-photo img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:50% 60%;border-radius:12px}
+.contact-photo figcaption{font-size:.8rem;color:var(--muted);margin-top:12px}
+@media(max-width:760px){
+.intro.band-light{grid-template-columns:1fr}
+.intro.band-light>h2,.intro.band-light>div,.intro-photo{grid-column:auto;grid-row:auto}
+.intro-photo{max-width:260px}
+.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-24px;padding-inline:24px;scrollbar-width:none}
+.gallery::-webkit-scrollbar{display:none}
+.gallery figure{flex:0 0 72%;scroll-snap-align:start}
+.gallery .g-main{flex-basis:88%}
+.gallery .g-main img{aspect-ratio:4/5}
+.service-photos{gap:8px}
+.contact-photo{margin-bottom:45px}
+.contact-photo img{aspect-ratio:4/3}
+}
