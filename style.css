@@ -361,3 +361,19 @@ nav .nav-cta{display:none}
 @media(max-width:760px){.lm-thanks{padding-block:48px 60px}.lm-thanks-steps li{grid-template-columns:36px 1fr}}
 .lm-error{margin:14px 0 0;padding:10px 14px;background:#f9f8f1;color:#8a2e1c;font-size:.85rem;border-left:3px solid #c0533a}
 .lm-form .button:disabled{opacity:.7;cursor:wait}
+
+/* Päta: odber noviniek */
+.footer-newsletter{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;padding:34px 0;border-top:1px solid var(--line)}
+.nl-text .eyebrow{font-size:.66rem;letter-spacing:.14em;margin-bottom:12px}
+.nl-title{font-family:Georgia,serif;font-size:1.6rem;line-height:1.2;color:var(--green);margin:0 0 10px}
+.nl-text p:last-child{font-size:.87rem;color:var(--muted);margin:0;max-width:420px}
+.nl-row{display:flex;gap:10px}
+.nl-row input{flex:1;min-width:0;font:inherit;font-size:.95rem;padding:13px 16px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink)}
+.nl-row input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.nl-row .button{flex-shrink:0;cursor:pointer;font:inherit;font-size:.87rem}
+.nl-consent{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:.75rem;line-height:1.55;color:var(--muted)}
+.nl-consent input{margin-top:3px;flex-shrink:0;accent-color:var(--green)}
+.nl-consent a{border-bottom:1px solid var(--gold);color:var(--green)}
+.nl-msg{margin:12px 0 0;font-size:.85rem;color:var(--green)}
+.nl-msg.is-error{color:#9b3b2e}
+@media(max-width:760px){.footer-newsletter{grid-template-columns:1fr;gap:18px;padding:28px 0}.nl-row{flex-direction:column}.nl-row .button{width:100%}}

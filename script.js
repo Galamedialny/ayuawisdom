@@ -149,3 +149,23 @@ document.querySelectorAll('form.lm-form').forEach(function(form){
     });
   });
 });
+
+/* Päta: odber noviniek cez MailerLite (dvojité potvrdenie) */
+document.querySelectorAll('form.nl-form').forEach(function(form){
+  var btn=form.querySelector('button[type=submit]'),msg=form.querySelector('.nl-msg'),label=btn?btn.textContent:'';
+  function show(text,ok){if(msg){msg.textContent=text;msg.hidden=false;msg.classList.toggle('is-error',!ok);}}
+  function done(){form.querySelectorAll('input,button').forEach(function(el){el.disabled=true});if(btn)btn.textContent='Hotovo';
+    show('Ďakujem! Poslala som vám e-mail – kliknite v ňom na potvrdenie odberu.',true);
+    if(window.gtag)window.gtag('event','newsletter_signup',{form_location:'footer'});}
+  function fail(t){if(btn){btn.disabled=false;btn.textContent=label;}show(t,false);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    if(btn){btn.disabled=true;btn.textContent='Odosielam…';}
+    var data=new FormData(form);
+    data.set('fields[suhlas_gdpr]','áno, '+new Date().toISOString().slice(0,16).replace('T',' ')+' UTC, päta '+location.pathname);
+    fetch(form.action,{method:'POST',body:data}).then(function(r){return r.json().catch(function(){return {success:r.ok};});})
+    .then(function(j){if(j&&j.success)return done();fail('E-mailová adresa vyzerá neplatne. Skontrolujte ju, prosím, a skúste to znova.');})
+    .catch(function(){fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).then(done).catch(function(){fail('Nepodarilo sa odoslať. Skúste to neskôr alebo napíšte na info@ayuawisdom.sk.');});});
+  });
+});
