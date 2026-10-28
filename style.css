@@ -359,3 +359,5 @@ nav .nav-cta{display:none}
 .lm-thanks-steps a{border-bottom:1px solid var(--gold)}
 .lm-thanks-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
 @media(max-width:760px){.lm-thanks{padding-block:48px 60px}.lm-thanks-steps li{grid-template-columns:36px 1fr}}
+.lm-error{margin:14px 0 0;padding:10px 14px;background:#f9f8f1;color:#8a2e1c;font-size:.85rem;border-left:3px solid #c0533a}
+.lm-form .button:disabled{opacity:.7;cursor:wait}

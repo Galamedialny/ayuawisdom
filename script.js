@@ -118,3 +118,29 @@ document.querySelectorAll('.has-sub').forEach(item=>{
 
 /* FAQ: otvoriť otázku podľa odkazu */
 (()=>{const open=()=>{let d=null;try{d=location.hash&&document.querySelector(location.hash)}catch{}if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView({block:'start'})}};open();window.addEventListener('hashchange',open)})();
+
+/* Landing /unavena/: odoslanie formulára do MailerLite a presmerovanie na poďakovanie */
+document.querySelectorAll('form.lm-form').forEach(function(form){
+  var btn=form.querySelector('button[type=submit]'),err=form.querySelector('.lm-error'),label=btn?btn.textContent:'';
+  function done(){window.location.href=form.getAttribute('data-success')||'/';}
+  function fail(msg){if(btn){btn.disabled=false;btn.textContent=label;}if(err){err.textContent=msg;err.hidden=false;}}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    if(err)err.hidden=true;
+    if(btn){btn.disabled=true;btn.textContent='Odosielam…';}
+    var data=new FormData(form);
+    data.set('fields[suhlas_gdpr]','áno, '+new Date().toISOString().slice(0,16).replace('T',' ')+' UTC, '+location.pathname);
+    fetch(form.action,{method:'POST',body:data}).then(function(r){
+      return r.json().catch(function(){return {success:r.ok};});
+    }).then(function(j){
+      if(j&&j.success)return done();
+      fail('E-mailová adresa vyzerá neplatne. Skontroluj ju, prosím, a skús to znova.');
+    }).catch(function(){
+      /* ak prehliadač nedovolí prečítať odpoveď, odošleme ešte raz bez nej */
+      fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).then(done).catch(function(){
+        fail('Nepodarilo sa odoslať. Skontroluj pripojenie alebo mi napíš na info@ayuawisdom.sk.');
+      });
+    });
+  });
+});
