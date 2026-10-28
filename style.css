@@ -444,3 +444,18 @@ nav .nav-cta{display:none}
 .idea-text em{color:var(--gold)}
 @media(max-width:760px){.idea-band{padding-bottom:50px}}
 article.prose.section{padding-bottom:0}
+
+/* Procedúry: video v úvode */
+.proc-video{position:relative;background:#e9e4d6}
+.proc-video video{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.proc-video figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;font-size:.75rem;letter-spacing:.06em;color:var(--cream);background:linear-gradient(transparent,rgba(10,35,27,.7))}
+@media(prefers-reduced-motion:reduce){.proc-video video{animation:none}}
+.proc-video video{height:auto}
+/* Omrvinky a obsah stránky nie sú hlavné menu (mobilné pravidlá pre nav sa ich netýkajú) */
+@media(max-width:760px){
+nav.breadcrumbs,nav.page-toc{display:flex;flex-direction:row;flex-wrap:wrap;flex-basis:auto;align-items:center;padding-bottom:0}
+nav.breadcrumbs{gap:8px}
+nav.breadcrumbs a{padding:0}
+nav.page-toc{gap:8px}
+nav.page-toc a{padding:8px 14px}
+}

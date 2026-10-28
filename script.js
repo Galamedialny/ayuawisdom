@@ -205,3 +205,11 @@ document.querySelectorAll('form.nl-form').forEach(window.ayuaBindNl);
   setTimeout(open,45000);
   document.addEventListener('mouseout',e=>{if(!e.relatedTarget&&e.clientY<=0&&scrollY>400)open()});
 })();
+
+/* Video v úvode: pri šetriči dát alebo obmedzenom pohybe ostane len náhľad; mimo obrazovky sa pozastaví */
+document.querySelectorAll('.proc-video video').forEach(v=>{
+  const save=navigator.connection&&navigator.connection.saveData;
+  const calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(save||calm){v.removeAttribute('autoplay');v.pause();v.preload='none';return}
+  if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?v.play().catch(()=>{}):v.pause()}),{threshold:.2}).observe(v)}
+});
