@@ -130,12 +130,17 @@ document.querySelectorAll('form.lm-form').forEach(function(form){
     if(err)err.hidden=true;
     if(btn){btn.disabled=true;btn.textContent='Odosielam…';}
     var data=new FormData(form);
-    data.set('fields[suhlas_gdpr]','áno, '+new Date().toISOString().slice(0,16).replace('T',' ')+' UTC, '+location.pathname);
+    /* súhlas sa overuje na webe (povinné pole); doklad súhlasu je potvrdenie e-mailu v MailerLite */
+    data.delete('lm-consent');
     fetch(form.action,{method:'POST',body:data}).then(function(r){
+      if(r.status===429)return {success:false,busy:true};
       return r.json().catch(function(){return {success:r.ok};});
     }).then(function(j){
       if(j&&j.success)return done();
-      fail('E-mailová adresa vyzerá neplatne. Skontroluj ju, prosím, a skús to znova.');
+      var f=(j&&j.errors&&j.errors.fields)||{};
+      if(j&&j.busy)return fail('Práve je tu veľa pokusov naraz. Skús to, prosím, o pár minút.');
+      if(f.email)return fail('E-mailová adresa vyzerá neplatne. Skontroluj ju, prosím, a skús to znova.');
+      fail('Nepodarilo sa odoslať. Skús to znova alebo mi napíš na info@ayuawisdom.sk.');
     }).catch(function(){
       /* ak prehliadač nedovolí prečítať odpoveď, odošleme ešte raz bez nej */
       fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).then(done).catch(function(){
