@@ -39,7 +39,7 @@ window.ayuaMaps=(()=>{
   const panel=document.createElement('section');
   panel.className='analytics-consent';
   panel.setAttribute('aria-label','Nastavenie analytických cookies');
-  panel.innerHTML='<strong>Pomôžete nám zlepšovať web?</strong><p>Po vašom súhlase používame Google Analytics na meranie návštevnosti a kliknutí na kontakty a Google Mapy na zobrazenie polohy štúdia. Tieto cookies sú dobrovoľné. <a href="/ochrana-osobnych-udajov/">Ochrana osobných údajov a cookies</a>.</p><div><button type="button" data-consent="yes">Prijať cookies</button><button type="button" data-consent="no">Odmietnuť</button></div>';
+  panel.innerHTML='<strong>Pomôžete nám zlepšovať web?</strong><p>Po vašom súhlase používame Google Analytics na meranie návštevnosti a kliknutí na kontakty a Google Mapy na zobrazenie polohy centra. Tieto cookies sú dobrovoľné. <a href="/ochrana-osobnych-udajov/">Ochrana osobných údajov a cookies</a>.</p><div><button type="button" data-consent="yes">Prijať cookies</button><button type="button" data-consent="no">Odmietnuť</button></div>';
   const settings=document.createElement('button');
   settings.type='button';settings.className='analytics-settings';settings.textContent='Nastavenie cookies';
   document.querySelector('footer')?.appendChild(settings);
