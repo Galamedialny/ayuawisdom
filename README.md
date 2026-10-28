@@ -1,6 +1,6 @@
 # AYUAWISDOM
 
-Web ajurvédskeho štúdia Dominiky Baranikovej vo Vranove nad Topľou.
+Web ajurvédskeho centra Dominiky Baranikovej vo Vranove nad Topľou.
 
 Statický viacstránkový web bez závislostí. Vercel: preset Other, bez build command, output directory `.`.
 
