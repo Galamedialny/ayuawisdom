@@ -151,12 +151,14 @@ document.querySelectorAll('form.lm-form').forEach(function(form){
 });
 
 /* Päta: odber noviniek cez MailerLite (dvojité potvrdenie) */
-document.querySelectorAll('form.nl-form').forEach(function(form){
+window.ayuaBindNl=function(form){if(form.dataset.bound)return;form.dataset.bound='1';
   var btn=form.querySelector('button[type=submit]'),msg=form.querySelector('.nl-msg'),label=btn?btn.textContent:'';
   function show(text,ok){if(msg){msg.textContent=text;msg.hidden=false;msg.classList.toggle('is-error',!ok);}}
   function done(){form.querySelectorAll('input,button').forEach(function(el){el.disabled=true});if(btn)btn.textContent='Hotovo';
     show('Ďakujem! Poslala som vám e-mail – kliknite v ňom na potvrdenie odberu.',true);
-    if(window.gtag)window.gtag('event','newsletter_signup',{form_location:'footer'});}
+    try{localStorage.setItem('ayuawisdom-nl-subscribed','1')}catch(e){}
+    if(window.gtag)window.gtag('event','newsletter_signup',{form_location:form.closest('.nl-popup')?'popup':'footer'});
+    var pop=form.closest('.nl-popup');if(pop)setTimeout(function(){pop.close()},4000);}
   function fail(t){if(btn){btn.disabled=false;btn.textContent=label;}show(t,false);}
   form.addEventListener('submit',function(e){
     e.preventDefault();
@@ -168,4 +170,38 @@ document.querySelectorAll('form.nl-form').forEach(function(form){
     .then(function(j){if(j&&j.success)return done();fail('E-mailová adresa vyzerá neplatne. Skontrolujte ju, prosím, a skúste to znova.');})
     .catch(function(){fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).then(done).catch(function(){fail('Nepodarilo sa odoslať. Skúste to neskôr alebo napíšte na info@ayuawisdom.sk.');});});
   });
-});
+};
+document.querySelectorAll('form.nl-form').forEach(window.ayuaBindNl);
+
+/* Vyskakovacie okno s odberom noviniek: raz za 14 dní, po prečítaní časti stránky */
+(()=>{
+  const src=document.querySelector('.footer-newsletter');
+  if(!src||!window.HTMLDialogElement||location.pathname.startsWith('/unavena'))return;
+  const KEY='ayuawisdom-nl-popup-v1',DAYS=14;
+  const get=k=>{try{return localStorage.getItem(k)}catch{return null}};
+  if(get('ayuawisdom-nl-subscribed'))return;
+  const last=+get(KEY)||0;if(Date.now()-last<DAYS*864e5)return;
+  const dlg=document.createElement('dialog');dlg.className='nl-popup';dlg.setAttribute('aria-labelledby','nl-pop-title');
+  dlg.innerHTML='<button type="button" class="nl-close" aria-label="Zavrieť">×</button>'+src.innerHTML.replace(/id="nl-title"/,'id="nl-pop-title"').replace(/(id|for)="nl-consent"/g,'$1="nl-consent-pop"').replace(/ data-bound="1"/g,'');
+  dlg.querySelectorAll('img').forEach(i=>i.loading='eager');
+  document.body.appendChild(dlg);
+  window.ayuaBindNl(dlg.querySelector('form.nl-form'));
+  let shown=false;
+  const remember=()=>{try{localStorage.setItem(KEY,String(Date.now()))}catch{}};
+  const open=()=>{
+    if(shown)return;
+    const consent=document.querySelector('.analytics-consent');
+    if(consent&&!consent.hidden)return; /* najprv nech návštevník vyrieši cookies */
+    if(document.activeElement&&document.activeElement.closest('.footer-newsletter'))return;
+    shown=true;remember();dlg.showModal();dlg.tabIndex=-1;dlg.focus();dlg.classList.add('is-open');
+    window.gtag&&window.gtag('event','newsletter_popup_view');
+  };
+  const close=()=>dlg.close();
+  dlg.querySelector('.nl-close').addEventListener('click',close);
+  dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
+  dlg.addEventListener('close',()=>dlg.classList.remove('is-open'));
+  const onScroll=()=>{const h=document.documentElement;if((scrollY+innerHeight)/h.scrollHeight>0.55)open()};
+  window.addEventListener('scroll',onScroll,{passive:true});
+  setTimeout(open,45000);
+  document.addEventListener('mouseout',e=>{if(!e.relatedTarget&&e.clientY<=0&&scrollY>400)open()});
+})();
