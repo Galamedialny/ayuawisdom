@@ -181,7 +181,7 @@ document.querySelectorAll('form.nl-form').forEach(window.ayuaBindNl);
   const get=k=>{try{return localStorage.getItem(k)}catch{return null}};
   if(get('ayuawisdom-nl-subscribed'))return;
   const last=+get(KEY)||0;if(Date.now()-last<DAYS*864e5)return;
-  const dlg=document.createElement('dialog');dlg.className='nl-popup';dlg.setAttribute('aria-labelledby','nl-pop-title');
+  const dlg=document.createElement('dialog');dlg.className='nl-popup';dlg.setAttribute('data-lenis-prevent','');dlg.setAttribute('aria-labelledby','nl-pop-title');
   dlg.innerHTML='<button type="button" class="nl-close" aria-label="Zavrieť">×</button>'+src.innerHTML.replace(/id="nl-title"/,'id="nl-pop-title"').replace(/(id|for)="nl-consent"/g,'$1="nl-consent-pop"').replace(/ data-bound="1"/g,'');
   dlg.querySelectorAll('img').forEach(i=>i.loading='eager');
   document.body.appendChild(dlg);
@@ -193,13 +193,13 @@ document.querySelectorAll('form.nl-form').forEach(window.ayuaBindNl);
     const consent=document.querySelector('.analytics-consent');
     if(consent&&!consent.hidden)return; /* najprv nech návštevník vyrieši cookies */
     if(document.activeElement&&document.activeElement.closest('.footer-newsletter'))return;
-    shown=true;remember();dlg.showModal();dlg.tabIndex=-1;dlg.focus();dlg.classList.add('is-open');
+    shown=true;remember();window.ayuaLenis&&window.ayuaLenis.stop();dlg.showModal();dlg.tabIndex=-1;dlg.focus();dlg.classList.add('is-open');
     window.gtag&&window.gtag('event','newsletter_popup_view');
   };
   const close=()=>dlg.close();
   dlg.querySelector('.nl-close').addEventListener('click',close);
   dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
-  dlg.addEventListener('close',()=>dlg.classList.remove('is-open'));
+  dlg.addEventListener('close',()=>{dlg.classList.remove('is-open');window.ayuaLenis&&window.ayuaLenis.start()});
   const onScroll=()=>{const h=document.documentElement;if((scrollY+innerHeight)/h.scrollHeight>0.55)open()};
   window.addEventListener('scroll',onScroll,{passive:true});
   setTimeout(open,45000);
@@ -213,3 +213,23 @@ document.querySelectorAll('.proc-video video').forEach(v=>{
   if(save||calm){v.removeAttribute('autoplay');v.pause();v.preload='none';return}
   if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?v.play().catch(()=>{}):v.pause()}),{threshold:.2}).observe(v)}
 });
+
+/* Plynulé posúvanie (Lenis) – iba myš a touchpad, dotyk ostáva prirodzený; vypnuté pri obmedzení animácií */
+(()=>{
+  if(!window.Lenis||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const lenis=new Lenis({lerp:0.1,wheelMultiplier:1,smoothWheel:true});
+  window.ayuaLenis=lenis;
+  const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);
+  const offset=()=>-((document.querySelector('header')||{}).offsetHeight||0)-16;
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]');
+    if(!a||a.classList.contains('skip'))return;
+    const id=a.getAttribute('href');if(id.length<2)return;
+    let t=null;try{t=document.querySelector(id)}catch{}
+    if(!t)return;
+    e.preventDefault();lenis.scrollTo(t,{offset:offset()});
+    history.pushState(null,'',id);
+  });
+  /* po načítaní stránky s kotvou (napr. /faq/#otazka-6) dorovnať pod hlavičku */
+  if(location.hash){let t=null;try{t=document.querySelector(location.hash)}catch{}if(t)setTimeout(()=>lenis.scrollTo(t,{offset:offset(),immediate:true}),50)}
+})();
