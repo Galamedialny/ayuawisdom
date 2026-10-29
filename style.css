@@ -465,3 +465,26 @@ html.lenis,html.lenis body{height:auto}
 html.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
 .lenis.lenis-stopped{overflow:clip}
+
+/* Jemné animácie: vynorenie úvodu a odkrývanie sekcií pri posúvaní */
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes settleIn{from{transform:scale(1.035)}to{transform:none}}
+.js-anim main>section:first-child .eyebrow,
+.js-anim main>section:first-child h1,
+.js-anim main>section:first-child h1+p,
+.js-anim main>section:first-child .proc-hero-text>p,
+.js-anim main>section:first-child .hero-actions,
+.js-anim main>section:first-child .proc-meta,
+.js-anim main>section:first-child .breadcrumbs,
+.js-anim main>section:first-child .page-toc{animation:riseIn .7s cubic-bezier(.2,.7,.2,1) both}
+.js-anim main>section:first-child .breadcrumbs{animation-delay:0s}
+.js-anim main>section:first-child .eyebrow{animation-delay:.05s}
+.js-anim main>section:first-child h1{animation-delay:.12s}
+.js-anim main>section:first-child h1+p,.js-anim main>section:first-child .proc-hero-text>p{animation-delay:.24s}
+.js-anim main>section:first-child .proc-meta,.js-anim main>section:first-child .page-toc{animation-delay:.32s}
+.js-anim main>section:first-child .hero-actions{animation-delay:.38s}
+.js-anim main>section:first-child figure img,.js-anim main>section:first-child figure video{animation:settleIn 1.4s cubic-bezier(.2,.7,.2,1) both}
+/* odkrývanie pri posúvaní */
+.js-anim .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js-anim .reveal.is-in,.anim-safe .reveal{opacity:1;transform:none}
+.js-anim .hero-slider figure img{animation:none}

@@ -233,3 +233,16 @@ document.querySelectorAll('.proc-video video').forEach(v=>{
   /* po načítaní stránky s kotvou (napr. /faq/#otazka-6) dorovnať pod hlavičku */
   if(location.hash){let t=null;try{t=document.querySelector(location.hash)}catch{}if(t)setTimeout(()=>lenis.scrollTo(t,{offset:offset(),immediate:true}),50)}
 })();
+
+/* Odkrývanie sekcií pri posúvaní */
+(()=>{
+  const root=document.documentElement;
+  if(!root.classList.contains('js-anim')||!('IntersectionObserver' in window))return;
+  const groups=['.service-grid>*','.concept-grid>*','.dosha-grid>*','.terms-grid>*','.pillars>*','.gallery>*','.steps>article','.education-grid>*','.education-steps>*','.faq-teaser-list li','.service-photos>*','.partner-courses li'];
+  const singles=['main>section:not(:first-child) .section-heading','main>section:not(:first-child)>h2','main>section:not(:first-child)>.eyebrow','.intro-photo','.faq-teaser-text','.service-detail','.proc-for','.proc-good .proc-split','.prose-band','.contact-photo','.education-partner>div','.ayu-note','.idea-text','.cta>div','.footer-newsletter','.footer-map-frame'];
+  const els=new Set();
+  groups.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{const i=[...el.parentElement.children].indexOf(el);el.style.setProperty('--d',Math.min(i,6)*0.08+'s');els.add(el)}));
+  singles.forEach(sel=>document.querySelectorAll(sel).forEach(el=>els.add(el)));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(el=>{if(el.closest('main>section:first-child')||el.closest('.nl-popup'))return;el.classList.add('reveal');io.observe(el)});
+})();
