@@ -529,3 +529,5 @@ html.lenis-smooth{scroll-behavior:auto!important}
 @media(max-width:760px){.band.has-curve::before{height:56px}}
 main .band-dark.has-curve:not(.cta){padding-top:112px}
 @media(max-width:760px){main .band-dark.has-curve:not(.cta){padding-top:80px}}
+.js-anim .reveal{transform:translateY(22px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.js-anim .reveal.is-in,.anim-safe .reveal{opacity:1;transform:none}

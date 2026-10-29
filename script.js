@@ -234,17 +234,25 @@ document.querySelectorAll('.proc-video video').forEach(v=>{
   if(location.hash){let t=null;try{t=document.querySelector(location.hash)}catch{}if(t)setTimeout(()=>lenis.scrollTo(t,{offset:offset(),immediate:true}),50)}
 })();
 
-/* Odkrývanie sekcií pri posúvaní */
+/* Odkrývanie obsahu pri posúvaní: nadpisy, texty, zoznamy, karty a obrázky vo všetkých sekciách */
 (()=>{
   const root=document.documentElement;
   if(!root.classList.contains('js-anim')||!('IntersectionObserver' in window))return;
-  const groups=['.service-grid>*','.concept-grid>*','.dosha-grid>*','.terms-grid>*','.pillars>*','.gallery>*','.steps>article','.education-grid>*','.education-steps>*','.faq-teaser-list li','.service-photos>*','.partner-courses li'];
-  const singles=['main>section:not(:first-child) .section-heading','main>section:not(:first-child)>h2','main>section:not(:first-child)>.eyebrow','.intro-photo','.faq-teaser-text','.service-detail','.proc-for','.proc-good .proc-split','.prose-band','.contact-photo','.education-partner>div','.ayu-note','.idea-text','.cta>div','.footer-newsletter','.footer-map-frame'];
-  const els=new Set();
-  groups.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{const i=[...el.parentElement.children].indexOf(el);el.style.setProperty('--d',Math.min(i,6)*0.08+'s');els.add(el)}));
-  singles.forEach(sel=>document.querySelectorAll(sel).forEach(el=>els.add(el)));
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:0.08});
-  els.forEach(el=>{if(el.closest('main>section:first-child')||el.closest('.nl-popup'))return;el.classList.add('reveal');io.observe(el)});
+  /* karty a položky, ktoré sa odkrývajú ako celok */
+  const units=['.service-grid>*','.concept-grid>*','.dosha-grid>*','.terms-grid>*','.pillars>*','.gallery>*','.steps>article','.education-grid>*','.education-steps>*','.faq-teaser-list li','.service-photos>*','.partner-courses li','.faq details','.proc-for','.contact-panel','.footer-newsletter','.footer-map-frame','.footer-map-info','.slider-bar-inner'];
+  /* textové a obrazové bloky */
+  const blocks='.eyebrow,h2,h3,p,ul,ol,dl,blockquote,figure,aside,.hero-actions,.button,.text-link,.price,.partner-links,.concept-links,.partner-logo,.idea-text';
+  const scope=[...document.querySelectorAll('main>section:not(:first-child),main>article,main>figure,main>div')];
+  const set=new Set();
+  units.forEach(sel=>document.querySelectorAll(sel).forEach(el=>set.add(el)));
+  scope.forEach(sec=>sec.querySelectorAll(blocks).forEach(el=>set.add(el)));
+  const skip=el=>el.closest('main>section:first-child,.nl-popup,.sub-menu,header')||el.classList.contains('band-ornament');
+  const list=[...set].filter(el=>!skip(el)).filter((el,_,arr)=>{let a=el.parentElement;while(a){if(set.has(a)&&!skip(a))return false;a=a.parentElement}return true});
+  const io=new IntersectionObserver(es=>{
+    es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top||a.boundingClientRect.left-b.boundingClientRect.left)
+      .forEach((e,k)=>{e.target.style.transitionDelay=Math.min(k,8)*0.07+'s';e.target.classList.add('is-in');io.unobserve(e.target)});
+  },{rootMargin:'0px 0px -6% 0px',threshold:0.05});
+  list.forEach(el=>{el.classList.add('reveal');io.observe(el)});
 })();
 
 /* Mäkké prechody medzi farebnými pásmi */
