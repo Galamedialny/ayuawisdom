@@ -255,20 +255,3 @@ document.querySelectorAll('.proc-video video').forEach(v=>{
   list.forEach(el=>{el.classList.add('reveal');io.observe(el)});
 })();
 
-/* Mäkké prechody medzi farebnými pásmi */
-(()=>{
-  const cream=getComputedStyle(document.body).backgroundColor;
-  const bgOf=el=>{if(!el)return cream;const c=getComputedStyle(el).backgroundColor;if(c&&c!=='rgba(0, 0, 0, 0)'&&c!=='transparent')return c;
-    return cream};
-  const lotus='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M7.2 12.6V6.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4V4.3c0-.8.9-1.4 2-1.4s2 .6 2 1.4v2.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.2c.8-.9 2-1.5 3.1-1.1-.4 2.3-1.6 4.6-3.3 6.2-1.4 1.4-3.1 2.4-4.6 2.4s-3.2-1-4.6-2.4c-1.7-1.6-2.9-3.9-3.3-6.2 1.1-.4 2.3.2 3.1 1.1Z"/><path d="M9.1 14.3c1.6-1.7 4.2-1.7 5.8 0-1.6 1.7-4.2 1.7-5.8 0Z"/><circle cx="12" cy="14.3" r=".75" fill="currentColor" stroke="none"/></svg>';
-  document.querySelectorAll('main .band').forEach(b=>{
-    if(b.matches('.cta')&&!b.previousElementSibling)return;
-    let prev=b.previousElementSibling,host=b;
-    while(!prev&&host.parentElement&&host.parentElement.tagName!=='MAIN'){host=host.parentElement;prev=host.previousElementSibling}
-    if(!prev)return;
-    const pc=bgOf(prev),own=getComputedStyle(b).backgroundColor;
-    if(pc===own)return;
-    b.style.setProperty('--prev-bg',pc);b.classList.add('has-curve');
-    if(b.classList.contains('band-dark')&&!b.classList.contains('cta')){const o=document.createElement('span');o.className='band-ornament';o.innerHTML=lotus;b.prepend(o)}
-  });
-})();
