@@ -597,3 +597,15 @@ html.lenis-smooth{scroll-behavior:auto!important}
 .program-teaser em{color:#d4b67c}
 .program-teaser-link{display:inline-flex;align-items:center;gap:12px;font-size:1rem;color:#d4b67c;border-bottom:1px solid #d4b67c;padding-bottom:6px;transition:gap .25s}
 .program-teaser-link:hover{gap:18px}
+.india-badge{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 16px;border:1px solid var(--gold);border-radius:999px;font-size:.85rem!important;color:var(--green)!important;background:rgba(170,130,68,.07)}
+.india-badge span{color:var(--gold)}
+.india-steps{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.india-steps li{padding:28px;border:1px solid rgba(249,248,241,.16);border-radius:14px;background:rgba(249,248,241,.04)}
+.india-steps li.is-key{border-color:#d4b67c;background:rgba(212,182,124,.12)}
+.india-steps h3{font-size:1.45rem;margin:12px 0 10px;color:var(--cream)}
+.india-steps p{font-size:.93rem;color:#c9d5cb;margin:0}
+.india-note{margin-top:24px;color:#d4b67c!important;font-size:.9rem}
+.key-item{color:var(--gold);font-weight:600}
+.price-card-dark .key-item{color:#d4b67c}
+.teaser-india{display:block;margin-top:12px;font-family:Arial,sans-serif;font-size:.95rem;color:#d4b67c}
+@media(max-width:760px){.india-steps{grid-template-columns:1fr}.india-badge{border-radius:12px;align-items:flex-start}}
