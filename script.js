@@ -255,3 +255,6 @@ document.querySelectorAll('.proc-video video').forEach(v=>{
   list.forEach(el=>{el.classList.add('reveal');io.observe(el)});
 })();
 
+
+/* Meranie kliknutí na rezerváciu programu */
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-book]');if(a&&window.gtag)window.gtag('event','booking_click',{booking_type:a.dataset.book,transport_type:'beacon'})});
