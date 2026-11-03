@@ -29,5 +29,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/procedury/zensky-bylinny-ritual/",
+      "destination": "/procedury/zensky-ritual/",
+      "permanent": true
+    }
   ]
 }
