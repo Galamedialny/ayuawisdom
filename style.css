@@ -612,3 +612,4 @@ html.lenis-smooth{scroll-behavior:auto!important}
 
 /* nav fit with voucher item */
 @media(min-width:1101px) and (max-width:1200px){.header{gap:12px}nav{gap:11px}nav a{font-size:.78rem}}
+.voucher-meta{margin-top:-6px;font-size:.98rem!important;color:var(--ink)!important}.voucher-meta a{border-bottom:1px solid var(--gold)}
