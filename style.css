@@ -662,6 +662,9 @@ html.lenis-smooth{scroll-behavior:auto!important}
 .v-cta p{color:rgba(243,234,215,.75);margin:16px 0 26px;font-size:1.08rem}
 .v-phone{display:inline-block;font-family:Georgia,serif;font-size:clamp(1.9rem,4vw,2.8rem);color:#d9b97f;border-bottom:1px solid rgba(217,185,127,.5);padding-bottom:6px;letter-spacing:.02em}
 .v-phone:hover{color:#f3ead7}
+.nowrap{white-space:nowrap}
+.v-mail{display:block;width:max-content;margin:18px auto 0;font-family:Georgia,serif;font-style:italic;font-size:1.25rem;color:rgba(243,234,215,.85);border-bottom:1px solid rgba(217,185,127,.4);padding-bottom:3px}
+.v-mail:hover{color:#d9b97f}
 @media(max-width:900px){
  .v-hero{grid-template-columns:1fr;gap:56px;padding-top:56px;padding-bottom:80px}
  .v-card-stage{justify-self:center;max-width:460px;padding:18px 22px 26px 0}
