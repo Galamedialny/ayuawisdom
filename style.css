@@ -683,3 +683,7 @@ html.lenis-smooth{scroll-behavior:auto!important}
 /* Značka: dlhší podtitul "Ajurvédske terapeutické centrum" */
 .brand small{letter-spacing:.14em}
 @media(max-width:760px){.brand small{font-size:.55rem;letter-spacing:.08em}}
+
+/* Päta: mapa na celú šírku, údaje o polohe sú len v bloku Navštívte nás */
+.footer-map{grid-template-columns:1fr}
+.footer-contact .footer-map-links{margin-top:14px}
