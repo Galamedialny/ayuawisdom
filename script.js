@@ -33,7 +33,7 @@ window.ayuaMaps=(()=>{
 
 /* Analytics: load only after explicit consent. */
 (()=>{
-  const id='G-WFYCMTRBX8',key='ayuawisdom-analytics-consent-v1';
+  const id='G-WFYCMTRBX8',tagId='GTM-MKRLRK5P',key='ayuawisdom-analytics-consent-v1';
   let allowed=false,loaded=false;
   const read=()=>{try{return localStorage.getItem(key)}catch{return null}};
   const panel=document.createElement('section');
@@ -55,6 +55,9 @@ window.ayuaMaps=(()=>{
     const tag=document.createElement('script');tag.async=true;
     tag.src='https://www.googletagmanager.com/gtag/js?id='+id;
     document.head.appendChild(tag);
+    const gt=document.createElement('script');gt.async=true;
+    gt.src='https://www.googletagmanager.com/gtm.js?id='+tagId;
+    document.head.appendChild(gt);
   }
   function choose(value){
     try{localStorage.setItem(key,value)}catch{}
