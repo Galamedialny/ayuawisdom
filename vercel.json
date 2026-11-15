@@ -28,6 +28,24 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/travenie/dakujem/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/travenie/potvrdene/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "redirects": [

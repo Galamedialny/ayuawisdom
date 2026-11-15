@@ -122,7 +122,7 @@ document.querySelectorAll('.has-sub').forEach(item=>{
 /* FAQ: otvoriť otázku podľa odkazu */
 (()=>{const open=()=>{let d=null;try{d=location.hash&&document.querySelector(location.hash)}catch{}if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView({block:'start'})}};open();window.addEventListener('hashchange',open)})();
 
-/* Landing /unavena/: odoslanie formulára do MailerLite a presmerovanie na poďakovanie */
+/* Landing /unavena/ a /travenie/: odoslanie formulára do MailerLite a presmerovanie na poďakovanie */
 document.querySelectorAll('form.lm-form').forEach(function(form){
   var btn=form.querySelector('button[type=submit]'),err=form.querySelector('.lm-error'),label=btn?btn.textContent:'';
   function done(){window.location.href=form.getAttribute('data-success')||'/';}
@@ -179,7 +179,7 @@ document.querySelectorAll('form.nl-form').forEach(window.ayuaBindNl);
 /* Vyskakovacie okno s odberom noviniek: raz za 14 dní, po prečítaní časti stránky */
 (()=>{
   const src=document.querySelector('.footer-newsletter');
-  if(!src||!window.HTMLDialogElement||location.pathname.startsWith('/unavena'))return;
+  if(!src||!window.HTMLDialogElement||location.pathname.startsWith('/unavena')||location.pathname.startsWith('/travenie'))return;
   const KEY='ayuawisdom-nl-popup-v1',DAYS=14;
   const get=k=>{try{return localStorage.getItem(k)}catch{return null}};
   if(get('ayuawisdom-nl-subscribed'))return;
