@@ -734,3 +734,32 @@ h1,h2,h3,.brand,.brand strong{font-weight:500}
 h1{letter-spacing:-.005em}
 h1 em,h2 em{font-weight:500}
 body{font-weight:400;letter-spacing:.005em}
+
+/* cards:start */
+.service-grid.sp-grid{border:0;gap:22px}
+.sp-grid .sp-card{padding:0;border:1px solid rgba(250,246,240,.14)!important;border-radius:14px;overflow:hidden;background:rgba(250,246,240,.035);transition:transform .35s ease,box-shadow .35s ease,background .35s ease}
+.sp-grid .sp-card:hover{background:rgba(250,246,240,.07);transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(0,0,0,.6)}
+.sp-img{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden}
+.sp-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.sp-card:hover .sp-img img{transform:scale(1.045)}
+.sp-img::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(46,10,19,.45),transparent)}
+.sp-badge{position:absolute;top:14px;left:14px;z-index:1;background:#d4b67c;color:#3a0e18;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:999px;font-weight:500}
+.sp-grid .sp-card{text-align:left;align-items:stretch}
+.sp-grid .sp-card h3,.sp-grid .sp-card p{text-align:left}
+.sp-grid .sp-card>.sp-body{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:24px 26px}
+.sp-body{display:flex;flex-direction:column;align-items:stretch;text-align:left;flex:1;padding:24px 26px 24px;position:relative}
+.sp-grid .sp-card .sp-body>div{display:flex;justify-content:space-between;align-items:baseline;width:100%;gap:12px}
+.sp-grid .sp-card .sp-body>div span{font-size:.8rem;letter-spacing:.04em}
+.sp-body .sp-badge{position:static;align-self:flex-start;margin-bottom:12px}
+.sp-grid .sp-card h3{min-height:0;margin:0 0 10px;font-size:1.55rem;line-height:1.15}
+.sp-grid .sp-card p{flex:1;margin:0}
+.sp-grid .sp-card .sp-body>div{border-top:1px solid rgba(250,246,240,.14);margin-top:20px;padding-top:16px}
+.sp-grid .sp-card strong{color:#d4b67c;font-size:1.6rem}
+.sp-grid .service-featured{background:rgba(212,182,124,.10);border-color:rgba(212,182,124,.45)!important}
+.sp-grid .service-help{background:transparent;border:1px solid rgba(212,182,124,.55)!important;justify-content:center}
+.sp-grid .service-help .sp-body{justify-content:center;text-align:left;padding:34px 30px}
+.sp-grid .service-help h3{font-style:italic;color:#d4b67c}
+.band-light .sp-grid .sp-card,.band-sand .sp-grid .sp-card,.sp-grid.on-light .sp-card{background:#fff;border-color:var(--line)!important}
+@media(max-width:1000px){.service-grid.sp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.service-grid.sp-grid{grid-template-columns:1fr;gap:18px}.sp-img{aspect-ratio:16/10}}
+/* cards:end */
