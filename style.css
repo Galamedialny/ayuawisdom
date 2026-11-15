@@ -767,3 +767,32 @@ body{font-weight:400;letter-spacing:.005em}
 .sub-menu .sub-main+.sub-main{border-bottom:0;margin-bottom:0;border-radius:0 0 8px 8px}
 .sub-menu a.sub-main{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:3px!important}
 .sub-menu a.sub-main small{white-space:normal;text-align:left;margin:0!important}
+/* ornament namiesto číslovania */
+.number.orn,.orn{display:block!important;position:relative;width:52px;height:9px;font-size:0!important;line-height:0;color:var(--gold);padding:0!important;margin-bottom:14px}
+.number.orn::before,.orn::before{content:"";position:absolute;left:12px;right:0;top:4px;height:1px;background:currentColor;opacity:.55}
+.number.orn::after,.orn::after{content:"";position:absolute;left:0;top:0;width:7px;height:7px;border:1px solid currentColor;transform:rotate(45deg) translate(1px,1px)}
+.band-dark .number.orn,.band-dark .orn{color:#d4b67c}
+.orn-dot{display:inline-block!important;width:7px;height:7px;flex:0 0 7px;padding:0!important;margin-top:9px;background:var(--gold);transform:rotate(45deg)}
+.v-step-list .orn{margin:10px 0 18px}
+/* sluzby: prehľad v kartách */
+.sp-overview{padding-bottom:90px}
+.sp-grid.on-light .sp-card{background:#fff;border:1px solid var(--line)!important;color:var(--ink)}
+.sp-grid.on-light .sp-card:hover{background:#fff;box-shadow:0 24px 44px -28px rgba(78,20,34,.45)}
+.sp-grid.on-light .sp-card h3{color:var(--ink)}
+.sp-grid.on-light .sp-card p{color:var(--muted)}
+.sp-grid.on-light .sp-card strong{color:var(--gold)}
+.sp-grid.on-light .sp-card .sp-body>div{border-top-color:var(--line)}
+.sp-grid.on-light .sp-card .sp-body>div span{color:var(--muted)}
+.sp-art{aspect-ratio:4/3;background:radial-gradient(120% 120% at 20% 0%,#6b2234 0%,var(--green) 60%,#33090f 100%);display:flex;align-items:center;justify-content:center}
+.sp-art .orn{width:90px;color:#d4b67c;margin:0}
+.sp-art .orn::before{left:18px}
+@media(min-width:1001px){.sp-overview .sp-grid{grid-template-columns:repeat(3,1fr)}}
+/* čitateľnosť: dlhší text v bezpätkovom písme */
+.diag-list li,.faq-teaser-list li a,.intro p,.idea-text,.education-hero .education-lead,.proc-hero-text>p.blog-lead,.lm-recognize,.program-teaser,.hero-portrait figcaption,.ayu-concept blockquote{font-family:'Jost',Arial,sans-serif!important;letter-spacing:.005em}
+.diag-list li{font-size:1.02rem;line-height:1.6;color:var(--ink)}
+.faq-teaser-list li a{font-size:1rem}
+.intro p{font-size:1.2rem;line-height:1.75}
+.idea-text{font-size:clamp(1.08rem,1.5vw,1.22rem)!important;line-height:1.75}
+.education-hero .education-lead,.proc-hero-text>p.blog-lead,.lm-recognize{font-size:1.15rem;line-height:1.75}
+.program-teaser{font-size:clamp(1.1rem,1.6vw,1.3rem)!important;line-height:1.7}
+.ayu-concept blockquote{font-size:1.12rem;line-height:1.75;font-style:italic}
