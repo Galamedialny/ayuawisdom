@@ -813,3 +813,9 @@ body{font-weight:400;letter-spacing:.005em}
 .doctor-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:500;color:var(--ink)}
 .doctor-role{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 @media(max-width:700px){.doctor-grid{grid-template-columns:minmax(0,300px);gap:44px}}
+.partner-doctors{margin-top:46px;padding-top:34px;border-top:1px solid var(--line)}
+.partner-doctors .eyebrow{display:block;margin-bottom:26px}
+.partner-doctors .doctor-grid{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:start;gap:28px;max-width:520px}
+.partner-doctors .doctor-name{font-size:1.4rem}
+.partner-doctors .doctor-role{font-size:.68rem;letter-spacing:.12em;text-align:center}
+@media(max-width:700px){.partner-doctors .doctor-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.partner-doctors .doctor-name{font-size:1.15rem}}
