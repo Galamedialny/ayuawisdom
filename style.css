@@ -796,3 +796,10 @@ body{font-weight:400;letter-spacing:.005em}
 .education-hero .education-lead,.proc-hero-text>p.blog-lead,.lm-recognize{font-size:1.15rem;line-height:1.75}
 .program-teaser{font-size:clamp(1.1rem,1.6vw,1.3rem)!important;line-height:1.7}
 .ayu-concept blockquote{font-size:1.12rem;line-height:1.75;font-style:italic}
+/* podstránky služieb */
+.svc-heading h1{margin-top:18px}
+.sp-services .sp-art{background:radial-gradient(120% 120% at 20% 0%,#7a2a3c 0%,#5c1a2a 60%,#3f0f19 100%)}
+.svc-single .service-title h2{display:none}
+.svc-heading{padding-bottom:48px}
+.sp-art{position:relative}
+.sp-art .orn{position:absolute!important;left:50%;top:50%;transform:translate(-50%,-50%);margin:0!important}
