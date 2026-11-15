@@ -803,3 +803,13 @@ body{font-weight:400;letter-spacing:.005em}
 .svc-heading{padding-bottom:48px}
 .sp-art{position:relative}
 .sp-art .orn{position:absolute!important;left:50%;top:50%;transform:translate(-50%,-50%);margin:0!important}
+/* vzdelávanie: lekári */
+.doctor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,340px));justify-content:center;gap:56px}
+.doctor{margin:0;text-align:center}
+.doctor-photo{position:relative;border-radius:999px 999px 14px 14px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 26px 50px -30px rgba(78,20,34,.55)}
+.doctor-photo::after{content:"";position:absolute;inset:10px;border:1px solid rgba(212,182,124,.7);border-radius:999px 999px 8px 8px;pointer-events:none}
+.doctor-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.doctor figcaption{margin-top:22px;display:flex;flex-direction:column;gap:6px;align-items:center}
+.doctor-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:500;color:var(--ink)}
+.doctor-role{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:700px){.doctor-grid{grid-template-columns:minmax(0,300px);gap:44px}}
