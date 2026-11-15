@@ -687,3 +687,8 @@ html.lenis-smooth{scroll-behavior:auto!important}
 /* Päta: mapa na celú šírku, údaje o polohe sú len v bloku Navštívte nás */
 .footer-map{grid-template-columns:1fr}
 .footer-contact .footer-map-links{margin-top:14px}
+/* kontakt: fotka namiesto duplicitnej adresy */
+.contact-side-photo{margin:0}
+.contact-side-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block}
+.contact-side-photo figcaption{font-size:.85rem;color:var(--muted);margin-top:12px;font-style:italic}
+.contact-side>p{margin-top:28px}
