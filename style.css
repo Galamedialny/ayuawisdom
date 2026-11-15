@@ -803,3 +803,18 @@ body{font-weight:400;letter-spacing:.005em}
 .svc-heading{padding-bottom:48px}
 .sp-art{position:relative}
 .sp-art .orn{position:absolute!important;left:50%;top:50%;transform:translate(-50%,-50%);margin:0!important}
+/* úvod: video na celú plochu */
+.video-hero{position:relative;min-height:max(580px,calc(100svh - 106px));display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#faf6f0;background:#2e0a13}
+.vh-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.vh-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(40,8,16,.82) 0%,rgba(40,8,16,.55) 48%,rgba(40,8,16,.22) 100%),linear-gradient(0deg,rgba(40,8,16,.55) 0%,transparent 35%)}
+.vh-inner{position:relative;z-index:2;padding-block:90px 120px;max-width:1184px;width:100%}
+.vh-inner .eyebrow{color:#d4b67c}
+.vh-inner h1{color:#faf6f0;font-size:clamp(3rem,6.4vw,5.6rem);line-height:1.02;margin:20px 0 26px;max-width:760px}
+.vh-inner h1 em{color:#d9b97f}
+.vh-inner p{color:rgba(250,246,240,.86);font-size:1.12rem;line-height:1.75;max-width:560px}
+.vh-inner .hero-actions{margin-top:34px}
+.vh-link{color:#faf6f0!important;border-color:#d4b67c!important}
+.vh-ribbon{position:absolute;left:0;right:0;bottom:0;z-index:2;border-top:1px solid rgba(250,246,240,.18)}
+.vh-ribbon .wrap{display:flex;gap:34px;flex-wrap:wrap;padding-block:18px;font-size:.72rem;letter-spacing:.24em;color:rgba(250,246,240,.75)}
+@media(max-width:760px){.video-hero{min-height:calc(100svh - 80px)}.vh-inner{padding-block:60px 110px}.vh-shade{background:linear-gradient(0deg,rgba(40,8,16,.85) 0%,rgba(40,8,16,.55) 60%,rgba(40,8,16,.35) 100%)}.vh-ribbon .wrap{gap:14px 20px;font-size:.62rem}}
+@media(prefers-reduced-motion:reduce){.vh-video{display:none}.video-hero{background:#2e0a13 url(/assets/studio-interier.jpg) center/cover}}
