@@ -711,3 +711,6 @@ html.lenis-smooth{scroll-behavior:auto!important}
 nav.blog-crumbs{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;flex-basis:auto;gap:10px;margin:0 0 26px;padding:0}nav.blog-crumbs a{font-size:.8rem;padding:0 0 2px;white-space:normal}
 .blog-featured{grid-template-columns:minmax(0,440px) 1fr}.blog-featured figure.blog-cover{min-height:0;aspect-ratio:2/3}.blog-featured figure.blog-cover img{height:100%;max-height:none;object-fit:cover}.blog-card img{aspect-ratio:2/3}
 @media(max-width:900px){.blog-featured{grid-template-columns:1fr}.blog-featured figure.blog-cover img{max-height:none;object-position:50% 50%}}
+/* blog hero: AYUAWISDOM Journal */
+.blog-hero h1{letter-spacing:.01em;margin-bottom:16px}
+.blog-hero .blog-hero-sub{display:block;margin:0 0 26px;letter-spacing:.32em}
