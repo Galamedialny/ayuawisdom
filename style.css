@@ -763,3 +763,7 @@ body{font-weight:400;letter-spacing:.005em}
 @media(max-width:1000px){.service-grid.sp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.service-grid.sp-grid{grid-template-columns:1fr;gap:18px}.sp-img{aspect-ratio:16/10}}
 /* cards:end */
+/* menu: Služby a cenník – iba prehľad a procedúry */
+.sub-menu .sub-main+.sub-main{border-bottom:0;margin-bottom:0;border-radius:0 0 8px 8px}
+.sub-menu a.sub-main{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:3px!important}
+.sub-menu a.sub-main small{white-space:normal;text-align:left;margin:0!important}
